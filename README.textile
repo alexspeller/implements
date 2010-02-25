@@ -1,0 +1,58 @@
+h1. implements
+
+Regulated interfaces in Ruby, much like java interfaces.
+
+h2. Example
+
+<pre>
+module Saleable
+  interface :price, :description
+  
+  def price_with_tax
+    1.175 * price
+  end
+end
+
+class Product
+  implements Saleable do
+  
+    def price
+      1.50
+    end
+    
+    def description
+      "My nice product"
+    end
+    
+  end
+end
+</pre>
+
+h3. What?
+
+Well, this is similar to including the module. The only difference is that if the methods specified as symbols to the interface declaration aren't defined by the end of the implements block, an error is raised. Note that normal methods from the interface module, e.g. in this case price_with_tax, will be included as usual, so Product instances will respond to price_with_tax as expected.
+
+h3. Why?
+
+I was ill, and I'd had a conversation with Rob, and it seemed like a good idea at the time.
+
+h3. Should I use it?
+
+No. Definitely not. It's silly, uses ballsy class and method names that are pretty much guaranteed to conflict with something important, and is overall a pointless experiment.
+
+
+h2. Note on Patches/Pull Requests
+ 
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add rspec for it. This is important so I don't break it in a
+  future version unintentionally.
+* Commit, do not mess with rakefile, version, or history.
+  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+* Send me a pull request. Bonus points for topic branches.
+
+h2. Copyright
+
+Copyright (c) 2010 Alex Speller. See LICENSE for details.
+
+
